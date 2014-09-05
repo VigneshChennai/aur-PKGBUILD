@@ -9,7 +9,7 @@ url="https://github.com/samm-git/jvpn"
 license=('GPL' 'PerlArtistic')
 depends=(perl perl-term-readkey perl-lwp-protocol-https)
 options=('!emptydirs' purge)
-source=("https://github.com/samm-git/jvpn/archive/$_dist$pkgver.tar.gz" "file://jvpn")
+source=("https://github.com/samm-git/jvpn/archive/$_dist$pkgver.tar.gz" jvpn)
 md5sums=("7fa5b01dee4835be5eeec00e57bb6e1d"
             "8e003deaa552a411d3aeabc3be3f6ceb")
 backup=('etc/jvpn/jvpn.ini')
