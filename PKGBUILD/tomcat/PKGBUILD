@@ -1,0 +1,43 @@
+# Contributor: Vigneshwaran P <vigneshchennai@live.in>
+pkgname=tomcat8-custom
+pkgver=8.0.12
+pkgrel=1
+pkgdesc='Tomcat 8 at /opt'
+_dist=apache-tomcat
+arch=('any')
+url="http://tomcat.apache.org/"
+license=('Apache License Version 2.0')
+depends=(jre7-openjdk-headless)
+options=('!emptydirs' purge)
+#source=("$_dist-$pkgver.tar.gz")
+source=("http://apache.mirrors.pair.com/tomcat/tomcat-8/v8.0.12/bin/$_dist-$pkgver.tar.gz")
+md5sums=("2209cf269a1e73f2fd5f451a3703afbc")
+#backup=('etc/jvpn/jvpn.ini')
+
+build() (
+    :
+)
+
+check() (
+    :
+)
+
+package() (
+  cd "$srcdir/$_dist-$pkgver"
+  mkdir -p "$pkgdir/opt/tomcat8"
+  chmod 755 "$pkgdir/opt/tomcat8"
+  cp -p -r * "$pkgdir/opt/tomcat8/"
+  chmod -R 644 "$pkgdir/opt/tomcat8/"
+  cd "$pkgdir/opt/tomcat8"
+  for l in `find .`;
+  do
+      if [ -d "$l" ];
+      then
+        chmod 755 "$l"
+      else
+        chmod 644 "$l"
+      fi;
+  done;
+  cd "$pkgdir/opt/tomcat8/bin"
+  chmod 755 *.sh
+)
